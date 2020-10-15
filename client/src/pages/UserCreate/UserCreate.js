@@ -16,6 +16,11 @@ export class UserCreate extends Component {
         fullname: "",
         email: "",
         phone: "",
+        age: "",
+        country: "",
+        psn: "",
+        live: "",
+        steam: "",
         page: {
             name: "User Create"
         }
@@ -65,16 +70,9 @@ export class UserCreate extends Component {
                                 Log into your user account
                             </Typography>
                             <TextField 
-                                id="firstname"
-                                label="Enter Your First Name"
-                                value={this.state.firstname}
-                                onChange={this.updateInput.bind(this)}
-                                style={{margin: "0.5em"}}
-                            />
-                            <TextField 
-                                id="lastname"
-                                label="Enter Your Last Name"
-                                value={this.state.lastname}
+                                id="fullname"
+                                label="Enter Your full Name"
+                                value={this.state.fullname}
                                 onChange={this.updateInput.bind(this)}
                                 style={{margin: "0.5em"}}
                             />
@@ -93,10 +91,53 @@ export class UserCreate extends Component {
                                 onChange={this.updateInput.bind(this)}
                                 style={{margin: "0.5em"}}
                             />
+                            <TextField 
+                                id="email"
+                                label="Enter E-mail"
+                                value={this.state.email}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
+                            <TextField 
+                                id="phone"
+                                label="Enter Phone"
+                                value={this.state.phone}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
+                            <TextField 
+                                id="age"
+                                label="Enter Age"
+                                value={this.state.age}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
+                            <TextField 
+                                id="psn"
+                                label="Enter psn username"
+                                value={this.state.psn}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
+                            <TextField 
+                                id="live"
+                                label="Enter your Xbox Live username"
+                                value={this.state.live}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
+                            <TextField 
+                                id="psn"
+                                label="Enter your STEAM username"
+                                value={this.state.steam}
+                                onChange={this.updateInput.bind(this)}
+                                style={{margin: "0.5em"}}
+                            />
                             <Tooltip
                                 title="------ Submit the user login information in the form of ------ 
                                 {username: this.state.username, password: this.state.password, 
-                                firstname: this.state.firstname, lastname: this.state.lastname} -------
+                                fullname: this.state.fullname, email: this.state.email,
+                                phone: this.state.phone, age} -------
                                 All the user information is entered into the database accordingly except for the password which is encrypted using bcrypt "
                             >
                                 <Button
