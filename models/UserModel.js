@@ -31,10 +31,6 @@ const userSchema = new Schema(
       type: Number,
       require: false,
     },
-    country: {
-      type: String,
-      require: false,
-    },
     psn: {
         type: String,
         require: false,

@@ -9,7 +9,6 @@ import {
     Paper, 
     Typography, 
     Button, 
-    TextField, 
     Tooltip,
     InputAdornment,
     IconButton,
@@ -19,8 +18,8 @@ import {
     Visibility,
     VisibilityOff
  } from '@material-ui/icons'
-
 import submitDataAPI from '../../utils/API';
+
 const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -42,7 +41,6 @@ export class UserCreate extends Component {
         email: "",
         phone: "",
         age: "",
-        country: "",
         psn: "",
         live: "",
         steam: "",
@@ -65,12 +63,16 @@ export class UserCreate extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        if (this.state.username && this.state.password && this.state.firstname && this.state.lastname) {
+        if (this.state.username && this.state.password && this.state.fullname && this.state.phone && this.state.age && this.state.psn && this.state.live && this.state.steam) {
             submitDataAPI.postUserData({
                 username: this.state.username,
                 password: this.state.password,
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
+                fullname: this.state.fullname,
+                phone: this.state.phone,
+                age: this.state.age,
+                psn: this.state.psn,
+                live: this.state.live,
+                steam: this.state.steam,
             })
             .then(res => this.clearUserData())
             .catch(err => console.log(err));
@@ -88,6 +90,14 @@ export class UserCreate extends Component {
 
     handleMouseDownPassword = (event) => {
         event.preventDefault();
+    };
+
+    handleChangeAge = (event) => {
+        const age = event.target.age;
+        this.setState({
+            ...this.state,
+            [age]: event.target.age,
+        });
     };
 
 
@@ -109,7 +119,7 @@ export class UserCreate extends Component {
                         spacing={3}
                         alignItems="center"
                         justify="center"
-                        style={{ minHeight: '75vh' }}
+                        style={{ minHeight: '75vh', width: '90%', margin: '0 auto' }}
                     >
                         <Grid item xs>
                             <Typography variant="h5" component="h2" style={{margin: "10px"}}>Create your account:</Typography>
@@ -177,16 +187,15 @@ export class UserCreate extends Component {
                             alignItems="center"
                         >
                             <Grid item xs={6}>
-                                <FormControl>
-                                    <InputLabel htmlFor="fullName">Full Name:</InputLabel>
+                                <FormControl style={{ width: '100%'}}>
+                                    <InputLabel htmlFor="fullname">Full Name:</InputLabel>
                                     <Input 
-                                        id="fullName" 
-                                        aria-describedby="fullName-helper"
+                                        id="fullname" 
+                                        aria-describedby="fullname-helper"
                                         value={this.state.fullname}
                                         onChange={this.updateInput.bind(this)}
-                                        fullWidth
                                     />
-                                    <FormHelperText id="username-helper">Enter your full name</FormHelperText>
+                                    <FormHelperText id="fullname-helper">Enter your full name</FormHelperText>
                                 </FormControl>
                             </Grid>
                             <Grid item xs>
@@ -206,7 +215,7 @@ export class UserCreate extends Component {
                                     <InputLabel htmlFor='age'>Age:</InputLabel>
                                     <NativeSelect
                                         value={this.state.age}
-                                        onChange={this.handleChange}
+                                        onChange={this.handleChangeAge}
                                         id="age"
                                         aria-describedby="age-helper"
                                     >   
@@ -219,9 +228,10 @@ export class UserCreate extends Component {
                                 </FormControl>
                             </Grid>
                         </Grid>
-                        <Grid
-                            conteiner
+                        <Grid 
+                            container 
                             spacing={3}
+                            alignItems="center"
                         >
                             <Grid item xs>
                                 <FormControl>
@@ -263,7 +273,6 @@ export class UserCreate extends Component {
                         <Grid
                             conteiner
                             spacing={12}
-                            alignItems="center"
                         >
                             <Tooltip
                                 title="------ Submit the user login information in the form of ------ 
@@ -272,13 +281,15 @@ export class UserCreate extends Component {
                                 phone: this.state.phone, age} -------
                                 All the user information is entered into the database accordingly except for the password which is encrypted using bcrypt "
                             >
-                                <Button
-                                    style={{margin: "1em"}}
-                                    disabled={!(this.state.username && this.state.password)}
-                                    onClick={this.handleFormSubmit}
-                                >
-                                    Submit
-                                </Button>
+                                <span>
+                                    <Button
+                                        style={{margin: "1em"}}
+                                        disabled={!(this.state.username && this.state.password)}
+                                        onClick={this.handleFormSubmit}
+                                    >
+                                        Submit
+                                    </Button>
+                                </span>
                             </Tooltip>
                         </Grid>
                     </Grid>
