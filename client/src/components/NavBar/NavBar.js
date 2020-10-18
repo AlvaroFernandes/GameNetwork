@@ -23,7 +23,6 @@ const styles = {
 };
 
 function NavBar(props) {
-  console.log(props)
   const { classes, loggedIn, } = props;
   return (
     <div className={classes.root}>
@@ -37,7 +36,7 @@ function NavBar(props) {
               </Tooltip>
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Mongo-Express-React-Node w/ a Material-UI front-end
+           GameNetwork
           </Typography>
           {loggedIn ? (
             <div>

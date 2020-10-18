@@ -19,8 +19,8 @@ import NoMatch from './pages/NoMatch';
 
 const theme = createMuiTheme({
   pallete: {
-    primary: { main: "#546E7A" },
-    secondary: { main: "#FF8A80" }
+    primary: { main: "#b71c1c" },
+    secondary: { main: "#f50057" }
   },
   typography: {
     useNextVariants: true,
