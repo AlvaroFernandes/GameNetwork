@@ -3,10 +3,17 @@ const db = require('../models');
 
 module.exports = {
     userCreate: function (req, res) {
+        console.log('userCreate')
         db.UserModel
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
+            .then(dbModel => {
+                console.log("banana")
+                res.json(dbModel)
+            })
+            .catch(err => {
+                console.log('apple')
+                res.status(422).json(err)
+            });
     },
     login: function (req, res) {
         console.log('routes/user.js, login, req.body: ');
