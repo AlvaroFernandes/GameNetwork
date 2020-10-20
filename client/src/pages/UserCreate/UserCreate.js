@@ -19,6 +19,7 @@ import {
     VisibilityOff
  } from '@material-ui/icons'
 import submitDataAPI from '../../utils/API';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,7 +59,9 @@ export class UserCreate extends Component {
     };
 
     clearUserData = () => {
-        this.setState({ username: "", password: "", fullname: "", email: "", phone: "", age: "", country: "", psn: "", live: "", steam: "",})
+        this.setState({ username: "", password: "", fullname: "", email: "", phone: "", age: "", country: "", psn: "", live: "", steam: "",});
+        const history = useHistory();
+        history.push('/login');
     };
 
     handleFormSubmit = event => {

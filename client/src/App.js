@@ -17,6 +17,7 @@ import NavBar from './components/NavBar';
 import NoMatch from './pages/NoMatch';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
 const theme = createMuiTheme({
   pallete: {
     primary: { main: "#b71c1c" },

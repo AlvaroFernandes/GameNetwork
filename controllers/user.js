@@ -7,12 +7,10 @@ module.exports = {
         db.UserModel
             .create(req.body)
             .then(dbModel => {
-                console.log("banana")
                 res.json(dbModel)
             })
             .catch(err => {
-                console.log('apple')
-                res.status(422).json(err)
+                res.status(422).json(err);
             });
     },
     login: function (req, res) {
