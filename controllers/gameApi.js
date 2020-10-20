@@ -1,5 +1,5 @@
 const axios = require('axios');
-const config = require('../config');
+const apiConfig = require('../apiConfig')
 
 const BASE_URL = 'https://rapidapi.p.rapidapi.com/games';
 
@@ -9,8 +9,9 @@ module.exports = {
 			method: "GET",
 			url: BASE_URL,
 			headers: {
-				"x-rapidapi-host": config.api.host,
-				"x-rapidapi-key": config.api.key,
+				"x-rapidapi-host": apiConfig.host,
+				"x-rapidapi-key": apiConfig.key,
+
 				"useQueryString": true
 			}
 		}).then(function(data){
@@ -19,7 +20,7 @@ module.exports = {
 
 			for(let i = 0; i < 6; i++){
 				const game = {
-					name: data.data.results[i].name,
+					// name: data.data.results[i].name,
 					img: data.data.results[i].background_image
 				};
 				imgArray.push(game);

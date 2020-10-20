@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import api from '../../utils/API';
+import BackgroundSlider from 'react-background-slider'
+import { Typography } from '@material-ui/core'
 
 
 export default class NoUser extends Component{
-    state = {
-        data: [],
-    };
+    state = {};
 
     componentDidMount() {
         this.loadImg();
@@ -15,7 +15,6 @@ export default class NoUser extends Component{
     loadImg() {
         api.getHomeImg()
         .then(res => {
-            console.log(res);
             if(res.status === 200){
                 this.setState({
                     data: res.data,
@@ -26,17 +25,22 @@ export default class NoUser extends Component{
         })
     };
 
+    
+
     render(){
-        const valueProps = props => {
-            const slides = () => {
-                this.state.data.map(e => {
-                    <div style={{ backgroundImage: e.img }}>
-                        <h1>{e.name}</h1>
-                    </div>
-                })
-            }
-        }
+       console.log(this.state.data);
         return (
+            !this.state.data ? (
+                <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                      Loading...
+                </Typography>
+            ) : (
+                <BackgroundSlider
+                    images={ this.state.data.map(d => d.img) }
+                    duration={10}
+                    transition={2}
+                />
+            )
         )
     }
 }
