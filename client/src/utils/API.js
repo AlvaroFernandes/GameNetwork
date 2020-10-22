@@ -24,5 +24,8 @@ export default {
     },
     getHomeImg: () => {
         return axios.get("/game/home/");
-    } 
+    }, 
+    searchUser: (user) => {
+        return axios.get("/user/userSearch", user);
+    }
 };

@@ -53,5 +53,14 @@ module.exports = {
             .findOne({ _id: req.user._id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    searchUser: function (req, res) {
+        db.UserModel
+            .find({$or:[
+                    {"username" : {$regex : `.*${req.user.searchUser}.*`}},
+                    {"fullname" : {$regex : `.*${req.user.searchUser}.*`}}
+            ]})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 };

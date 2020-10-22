@@ -33,4 +33,7 @@ router.route("/bio")
     .post(userController.updateBio)
     .get(userController.getUserBio);
 
+router.route("/userSearch")
+    .get(userController.searchUser);
+
 module.exports = router;

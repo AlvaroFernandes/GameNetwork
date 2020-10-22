@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
+import { Grid, Paper, Typography, TextField, Button, inputLabelProps} from '@material-ui/core';
 import api from '../../utils/API';
+import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 
 const useStyles = theme => ({
@@ -19,12 +20,43 @@ const useStyles = theme => ({
 })
 
 class Search extends Component {
-    state = {
-
+    constructor (props) {
+        super(props);
+        this.userRef = React.createRef();
+        this.gameRef = React.createRef();
+    }
+    state = { 
+        searchGame: '',
+        searchUser: '',
     }
 
-    handleUserSearch(){
+    handleGameSearchInputChange = () => {
+        this.setState({
+            searchGame: this.gameRef.current.value
+        })
+    }
+    
+    handleUserSearchInputChange = () => {
+        this.setState({
+            searchUser: this.userRef.current.value
+        })
+    }
 
+    handleUserSearch = e => {
+        e.preventDefault();
+
+        if(this.state.searchUser){
+            console.log(this.state.searchUser);
+            api.searchUser({
+                user: this.state.searchUser,
+            })
+            .then(
+                res =>{
+                    console.log(res);
+                }
+            )
+            .catch(err => console.log(err))
+        }
     }
 
     handleGameSearch(){
@@ -60,11 +92,14 @@ class Search extends Component {
                                 <TextField 
                                     id='gameSearchInput'
                                     label='Search Games'
+                                    ref={ this.gameRef }
+                                    onChange={this.handleGameSearchInputChange}
+                                    value={this.state.searchGame}
                                     style={{ margin: 8 }}
                                     placeholder='Search Games...'
                                     fullWidth
                                     margin='normal'
-                                    inputLabelProps={{
+                                    inputlabelprops={{
                                         shrink: true,
                                     }}
                                 />
@@ -72,7 +107,6 @@ class Search extends Component {
                                     onClick={this.handleGameSearch}
                                     label='Search Games'
                                     variant='contained'
-                                    color='black'
                                     className={classes.button}
                                     endIcon={<SearchIcon />}
                                 >
@@ -91,18 +125,20 @@ class Search extends Component {
                                 <TextField 
                                     id='userSearchInput'
                                     label='Search User'
+                                    ref={ this.userRef }
+                                    onChange={this.handleUserSearchInputChange}
+                                    value={this.state.searchUser}
                                     style={{ margin: 8 }}
                                     placeholder='Search User...'
                                     fullWidth
                                     margin='normal'
-                                    inputLabelProps={{
+                                    inputlabelprops={{
                                         shrink: true,
                                     }}
                                 />
                                 <Button
-                                    onClick={handleUserSearch}
+                                    onClick={this.handleUserSearch}
                                     variant='contained'
-                                    color='black'
                                     className={classes.button}
                                     endIcon={<SearchIcon />}
                                 >
