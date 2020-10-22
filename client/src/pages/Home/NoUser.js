@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../utils/API';
 import BackgroundSlider from 'react-background-slider'
-import { Typography } from '@material-ui/core'
+import { Typography, Grid, Paper } from '@material-ui/core'
 
 
 export default class NoUser extends Component{
@@ -31,9 +31,20 @@ export default class NoUser extends Component{
        console.log(this.state.data);
         return (
             !this.state.data ? (
-                <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                      Loading...
-                </Typography>
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    style={{ minHeight: '100vh' }}
+                >
+                    <Paper>
+                        <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                            Loading...
+                        </Typography>
+                    </Paper>
+                </Grid>
             ) : (
                 <BackgroundSlider
                     images={ this.state.data.map(d => d.img) }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Grid, Paper, Typography } from '@material-ui/core';
 import logoutAPI from '../../utils/API';
 import NoUser from './NoUser';
+import MainPage from './MainPage';
 
 export class Home extends Component {
   state = {
@@ -32,96 +32,11 @@ export class Home extends Component {
     // const { cardProp } = this.state;
     return (
       <div>
-        <Grid
-          container
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justify="center"
-          style={{ minHeight: '75vh' }}
-        >
-          <Grid
-            item
-            xs={3}
-          >
-            {/* <Grid 
-              container
-              spacing={8}
-              direction="column"
-              alignItems="center"
-              justify="center"
-              >
-                {cardProp.map(index => {
-                  return(
-                    <Grid
-                      item
-                      key={index.id} 
-                    >
-                      <GridCard {...index} />
-                    </Grid>
-                    )
-                })}
-              </Grid> */}
-          </Grid>
-          <Grid
-            item
-            xs={6}
-          >
-            <Grid 
-              container
-              spacing={0}
-              direction="row"
-              alignItems="center"
-              justify="center"
-              style={{padding: 10}}
-              >
-              <Paper>
-                <Grid
-                  container
-                  alignItems="center"
-                  direction="column"
-                > 
-                  
-                  {this.props.loggedIn ? (
-                    <div>
-                      <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                        Welcome to your Home Page
-                      </Typography>
-                      <Typography variant="h5" component="h2" style={{margin: "1em", textAlign: "center"}}>
-                        {this.props.username}
-                      </Typography>
-                    </div>
-                  ) : (
-                    <NoUser />
-                  )}
-                </Grid>
-              </Paper>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            xs={3}
-          >
-            {/* <Grid 
-              container
-              spacing={8}
-              direction="column"
-              alignItems="center"
-              justify="center"
-              >
-                {cardProp.map(index => {
-                  return(
-                    <Grid
-                      item
-                      key={index.id}
-                    >
-                    <GridCard {...index} />
-                    </Grid>
-                    )
-                })}
-              </Grid> */}
-          </Grid>
-        </Grid>
+        {this.props.loggedIn ? (
+          <MainPage data={this.props}/>
+        ) : (
+          <NoUser />
+        )}
       </div>
     )
   };

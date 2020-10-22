@@ -3,14 +3,15 @@ import { makeStyles, fade,  } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import HomeIcon from '@material-ui/icons/Home';
 import Tooltip from '@material-ui/core/Tooltip';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
-import { AccountCircle } from '@material-ui/icons';
+import { Create, VpnKey } from '@material-ui/icons';
+import HomeIcon from '@material-ui/icons/Home';
+import MoreIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -112,8 +113,8 @@ function LogoutNav(props){
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Sign in</MenuItem>
       </Menu>
     );
   
@@ -128,32 +129,29 @@ function LogoutNav(props){
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       >
-        <MenuItem>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label="Login"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            href="/Login"
+            color="inherit"
+          >
+            <VpnKey />
           </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
+          <p>Login</p>
         </MenuItem>
         <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton
-            aria-label="account of current user"
+            aria-label="create user"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
+            href="/UserCreate"
             color="inherit"
           >
-            <AccountCircle />
+            <Create />
           </IconButton>
-          <p>Profile</p>
+          <p>Sign in</p>
         </MenuItem>
       </Menu>
     );
@@ -161,23 +159,20 @@ function LogoutNav(props){
         <div className={classes.grow}>
           <AppBar position="static">
             <Toolbar>
-              <IconButton
-                edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="open drawer"
-              >
-                <MenuIcon />
+              <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" href="/">
+                <Tooltip title='Routes to "/"'>
+                  <HomeIcon />
+                </Tooltip>
               </IconButton>
               <Typography className={classes.title} variant="h6" noWrap>
-                Material-UI
+                Game Network
               </Typography>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
                 </div>
                 <InputBase
-                  placeholder="Search…"
+                  placeholder="Search game…"
                   classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
@@ -187,25 +182,25 @@ function LogoutNav(props){
               </div>
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
-                <IconButton aria-label="show 4 new mails" color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <MailIcon />
-                  </Badge>
-                </IconButton>
-                <IconButton aria-label="show 17 new notifications" color="inherit">
-                  <Badge badgeContent={17} color="secondary">
-                    <NotificationsIcon />
-                  </Badge>
+              <IconButton
+                  edge="end"
+                  aria-label="login"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  href="/login"
+                  color="inherit"
+                >
+                  <VpnKey />
                 </IconButton>
                 <IconButton
                   edge="end"
-                  aria-label="account of current user"
+                  aria-label="create user"
                   aria-controls={menuId}
                   aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
+                  href="/UserCreate"
                   color="inherit"
                 >
-                  <AccountCircle />
+                  <Create />
                 </IconButton>
               </div>
               <div className={classes.sectionMobile}>

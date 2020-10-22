@@ -1,14 +1,15 @@
 import React from 'react';
-import { LoginNav } from './LoginNav';
-import { LogoutNav } from './LogoutNav';
+import LoginNav from './LoginNav.js';
+import LogoutNav from './LogoutNav';
 
 
 
 function NavBar(props) {
   const { loggedIn } = props;
+  console.log(props);
   return (
     <div>
-      {loggedIn ? <LoginNav /> : <LogoutNav />}
+      {loggedIn ? <LoginNav logout={props.logout} /> : <LogoutNav />}
     </div>
   );
 }
