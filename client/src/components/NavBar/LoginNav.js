@@ -10,7 +10,6 @@ import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -175,21 +174,19 @@ function LoginNav(props){
               <Typography className={classes.title} variant="h6" noWrap>
                 Game Network
               </Typography>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  placeholder="Search..."
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ 'aria-label': 'search' }}
-                />
-              </div>
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
+              <IconButton
+                  edge="end"
+                  aria-label="Search page"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  href="/Search"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <SearchIcon />
+              </IconButton>
               <IconButton
                   edge="end"
                   aria-label="account of current user"

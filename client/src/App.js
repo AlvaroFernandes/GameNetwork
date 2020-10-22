@@ -15,6 +15,7 @@ import UserCreate from './pages/UserCreate';
 import Profile from './pages/Profile';
 import NavBar from './components/NavBar';
 import NoMatch from './pages/NoMatch';
+import Search from './pages/Search';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -113,6 +114,7 @@ class App extends Component {
             <Route path="/Profile" render={
               () => <Profile {...this.state} />
             } />
+            <Route path="/search" component={Search} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

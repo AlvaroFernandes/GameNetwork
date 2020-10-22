@@ -6,7 +6,6 @@ import LogoutNav from './LogoutNav';
 
 function NavBar(props) {
   const { loggedIn } = props;
-  console.log(props);
   return (
     <div>
       {loggedIn ? <LoginNav logout={props.logout} /> : <LogoutNav />}

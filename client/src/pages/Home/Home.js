@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logoutAPI from '../../utils/API';
 import NoUser from './NoUser';
-import MainPage from './MainPage';
+import Dashboard from './Dashboard';
 
 export class Home extends Component {
   state = {
@@ -25,15 +25,11 @@ export class Home extends Component {
       })
       .catch(err => console.log(err));
   };
-  componentDidMount() {
-    console.log(this.props)
-  }
   render() {
-    // const { cardProp } = this.state;
     return (
       <div>
         {this.props.loggedIn ? (
-          <MainPage data={this.props}/>
+          <Dashboard data={this.props}/>
         ) : (
           <NoUser />
         )}
