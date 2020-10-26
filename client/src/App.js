@@ -16,6 +16,7 @@ import Profile from './pages/Profile';
 import NavBar from './components/NavBar';
 import NoMatch from './pages/NoMatch';
 import Search from './pages/Search';
+import Game from './pages/Game';
 // !^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -115,6 +116,7 @@ class App extends Component {
               () => <Profile {...this.state} />
             } />
             <Route path="/search" component={Search} />
+            <Route path="/gameInfo/:id" component={Game} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, TextField, Button, inputLabelProps} from '@material-ui/core';
+import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
 import api from '../../utils/API';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
+import GameSearch from './gameSearch';
 
 const useStyles = theme => ({
     root: {
@@ -23,18 +24,11 @@ class Search extends Component {
     constructor (props) {
         super(props);
         this.userRef = React.createRef();
-        this.gameRef = React.createRef();
     }
     state = { 
-        searchGame: '',
         searchUser: '',
     }
 
-    handleGameSearchInputChange = () => {
-        this.setState({
-            searchGame: this.gameRef.current.value
-        })
-    }
     
     handleUserSearchInputChange = () => {
         this.setState({
@@ -59,9 +53,6 @@ class Search extends Component {
         }
     }
 
-    handleGameSearch(){
-
-    }
     render(){
         const { classes } = this.props;
         return(
@@ -80,40 +71,7 @@ class Search extends Component {
                                 Search
                             </Typography>
                         </Grid>
-                        <Grid
-                            item
-                            xs={6}
-                        >
-                            
-                            <Typography variant='h6' component='h4' style={{ margin: '1em' }}>
-                                Search Games
-                            </Typography>
-                            <form className={classes.root} noValidate id='gameSearch'>
-                                <TextField 
-                                    id='gameSearchInput'
-                                    label='Search Games'
-                                    ref={ this.gameRef }
-                                    onChange={this.handleGameSearchInputChange}
-                                    value={this.state.searchGame}
-                                    style={{ margin: 8 }}
-                                    placeholder='Search Games...'
-                                    fullWidth
-                                    margin='normal'
-                                    inputlabelprops={{
-                                        shrink: true,
-                                    }}
-                                />
-                                <Button
-                                    onClick={this.handleGameSearch}
-                                    label='Search Games'
-                                    variant='contained'
-                                    className={classes.button}
-                                    endIcon={<SearchIcon />}
-                                >
-                                    Search...
-                                </Button>
-                            </form>
-                        </Grid>
+                        <GameSearch />
                         <Grid
                             item
                             xs={6}
