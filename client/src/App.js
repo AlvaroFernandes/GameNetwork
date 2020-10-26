@@ -31,9 +31,10 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        color: 'grey',
+        color: 'white',
+        backgroundColor: '#3f51b5',
         '&:hover': {
-          backgroundColor: 'purple'
+          backgroundColor: 'black'
         }
       }
     }
@@ -116,7 +117,9 @@ class App extends Component {
               () => <Profile {...this.state} />
             } />
             <Route path="/search" component={Search} />
-            <Route path="/gameInfo/:id" component={Game} />
+            <Route path="/gameInfo/:id" render={
+              (props) => <Game {...{...this.state, ...props}}  />
+            } />
             <Route component={NoMatch} />
           </Switch>
         </Router>

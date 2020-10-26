@@ -1,51 +1,31 @@
 import React, { Component } from 'react';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Chip, Grid, Paper, Typography, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import api from '../../utils/API';
 import PropTypes from 'prop-types';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
+import ReactPlayer from 'react-player';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useStyles = theme => ({
     root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-
-    },
-    mainFeaturedPost: {
-        position: 'relative',
-        backgroundColor: theme.palette.grey[800],
-        color: theme.palette.common.white,
-        marginBottom: theme.spacing(4),
-        backgroundSize: 'auto',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-      },
-      overlay: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        right: 0,
-        left: 0,
-        backgroundColor: 'rgba(0,0,0,.3)',
-      },
-      mainFeaturedPostContent: {
-        position: 'relative',
-        padding: theme.spacing(3),
-        minHeight: 400,
-        [theme.breakpoints.up('md')]: {
-          padding: theme.spacing(6),
-          paddingRight: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        '& > *': {
+          margin: theme.spacing(0.5),
         },
-      },
+    },
+    img: {
+        maxWidth: 'inherit',
+    }
 })
 
 class Games extends Component {
     state={
+        _id: this.props._id,
     }
+    
     componentDidMount(){
         const gameId = this.props.match.params.id;
         this.loadGame(gameId);
@@ -66,40 +46,80 @@ class Games extends Component {
         })
     }
     
+    addGame(id){
+        const userId = this.state._id;
+        const gameId = id;
+
+        console.log(gameId, userId);
+
+    }
 
     
     render(){
         const { classes } = this.props;
+        console.log(this.state.data);
         return(
             <div className={classes.root}>
                  {!this.state.data ? (
                      <div></div>
                  ):(
+                     
                     <div>
                         <div className={classes.appBarSpacer} />
-                        <main>
-                        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: 'url(' + this.state.data.img + ')'}}>
-                            <div className={classes.overlay} />
-                            <Grid container justify='center'>
-                                <Grid item md={6}>
-                                    <div classNmae={classes.mainFeaturedPostContent}>
-                                        <Typography component='h1' variant='h3' color='inherit' gutterButton>
-                                            {this.state.data.name}
-                                        </Typography>
-                                    </div>
+                        <div>
+                            <Grid container direction="row" justify="center" spacing={0}>
+                                <Grid item xs={12}>
+                                    <img className={ classes.img } src={this.state.data.img} alt={this.state.data.name}/>
+                                    <Button variant='contained' color="primary" style={{ float: 'right' }} onClick={this.addGame(this.state.data.id)} startIcon={<AddCircleOutlineIcon />}>
+                                        ADD
+                                    </Button>
                                 </Grid>
-                            </Grid>
-                            <Grid container>
-                                <Grid item md="10">
-                                    <div
+                                <Grid item xs={1}></Grid>
+                                <Grid item xs={10}>
+                                    <Typography variant="h2" style={{ textAlign: 'center'}}>
+                                        {this.state.data.name}
+                                    </Typography>
                                 </Grid>
+                                <Grid item xs={1}></Grid>
+                                <Grid item xs={12} style={{textAlign: 'center'}}>
+                                    {
+                                        this.state.data.platforms.map(e => {
+                                            return <Chip style={{margin: 5}} key={e.platform.id} label={e.platform.name}/>
+                                        })
+                                    }
+                                </Grid>
+                                <Grid item xs={12} style={{textAlign: 'center', padding: '2'}}>
+                                    <Typography>
+                                        Genres:
+                                    </Typography>
+                                    {
+                                        this.state.data.genres.map(e => {
+                                            return <Chip style={{margin: 5}} key={e.id} label={e.name}/>                                           
+                                        })
+                                    }
+                                </Grid>
+                                <Grid item xs={12} style={{margin: 5}}>   
+                                    <Grid container direction="row" spacing={3}>
+                                        <Grid item xs={6}>                                            
+                                            <Paper style={{margin: 3, padding: 3}}>
+                                                <Typography>
+                                                    Description:
+                                                </Typography>
+                                                {ReactHtmlParser(this.state.data.description)}
+                                            </Paper>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <ReactPlayer url={this.state.data.video.clip} controls={true} />
+                                        </Grid>
+                                    </Grid>
+                                </Grid> 
                             </Grid>
-                        </Paper>
-                        </main>
+                        </div>
                     </div>
                  )}
             </div>      
         )
+
     }
 }
 

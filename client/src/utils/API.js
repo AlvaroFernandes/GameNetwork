@@ -31,6 +31,9 @@ export default {
     getGame: (gameId) =>{
         return axios.get('/game/gameInfo/' + gameId);
     },
+    postUserGame: (userId, gameId) => {
+        return axios.post("/game/addGame/", {userId,gameId})
+    },
     searchUser: (user) => {
         return axios.get("/user/userSearch", user);
     }
