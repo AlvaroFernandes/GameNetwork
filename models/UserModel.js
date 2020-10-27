@@ -41,10 +41,6 @@ const userSchema = new Schema(
     steam: {
         type: String,
         require: false,
-    },
-    games: {
-      type: Schema.Types.ObjectId,
-      ref: Game
     }
   },
 

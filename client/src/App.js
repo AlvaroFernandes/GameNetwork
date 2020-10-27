@@ -65,17 +65,13 @@ class App extends Component {
   getUser() {
     api.getUser()
     .then(res => {
-      console.log('Get user response: ');
-      console.log(res.data);
       if (res.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
         this.setState({
           loggedIn: true,
           username: res.data.user.username,
           _id: res.data.user._id,
         });
       } else {
-        console.log('Get user: no user');
         this.setState({
           loggedIn: false,
           username: null
@@ -86,7 +82,6 @@ class App extends Component {
 
    logout(event) {
     event.preventDefault();
-    console.log('logging out');
     api.postLogout()
       .then(res => {
         console.log(res.data);

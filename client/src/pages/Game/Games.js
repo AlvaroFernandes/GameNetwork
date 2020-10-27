@@ -51,7 +51,13 @@ class Games extends Component {
         const gameId = id;
 
         console.log(gameId, userId);
-
+        api.postUserGame({
+            gameId: gameId,
+            userId: userId
+        })
+        .then(res => console.log('game add'))
+        .catch(err => console.log(err));
+        
     }
 
     

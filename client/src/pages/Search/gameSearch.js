@@ -57,10 +57,6 @@ class GameSearch extends Component {
         })
     };
 
-    handleGameClick = (event, id) => {
-        
-    };
-
     render(){
         const { classes } = this.props;
         console.log(this.state);
@@ -94,7 +90,7 @@ class GameSearch extends Component {
                     <List dense className={classes.list}>
                         {
                             this.state.data.filter(
-                                e => e.name.toLowerCase().indexOf(this.state.searchGame.toLowerCase()) !==1
+                                e => e.name.toLowerCase().indexOf(this.state.searchGame.toLowerCase()) === 0
                             ).map(
                                 e => {
                                     return(

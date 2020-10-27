@@ -1,5 +1,6 @@
 const axios = require('axios');
-const apiConfig = require('../apiConfig')
+const apiConfig = require('../apiConfig');
+const db = require('../models');
 
 const BASE_URL = 'https://rapidapi.p.rapidapi.com/games';
 const API = {
@@ -84,4 +85,16 @@ module.exports = {
 
 		})
 	},
+	addGame: function (req, res) {
+		console.log("add game")
+		console.log(req.body);
+		db.GameModel
+			.create(req.body.userId)
+			.then(dbMode => {
+				res.json(dbModel)
+			})
+			.catch(err => {
+				res.status(422).json(err)
+			});
+	}
 }

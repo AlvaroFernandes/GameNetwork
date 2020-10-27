@@ -3,7 +3,6 @@ import { makeStyles, fade,  } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
@@ -127,19 +126,19 @@ function LogoutNav(props){
         open={isMobileMenuOpen}
         onClose={handleMobileMenuClose}
       >
-        <MenuItem onClick={handleProfileMenuOpen}>
+        <MenuItem>
           <IconButton
             aria-label="Login"
             aria-controls="primary-search-account-menu"
             aria-haspopup="true"
-            href="/Login"
+            href="/login"
             color="inherit"
           >
             <VpnKey />
           </IconButton>
           <p>Login</p>
         </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
+        <MenuItem>
           <IconButton
             aria-label="create user"
             aria-controls="primary-search-account-menu"
@@ -158,9 +157,7 @@ function LogoutNav(props){
           <AppBar position="static">
             <Toolbar>
               <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" href="/">
-                <Tooltip title='Routes to "/"'>
                   <HomeIcon />
-                </Tooltip>
               </IconButton>
               <Typography className={classes.title} variant="h6" noWrap>
                 Game Network

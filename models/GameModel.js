@@ -8,9 +8,13 @@ const gameSchema = new Schema(
             type: Number,
             require: true
         },
+        userId: {
+            type: Schema.Types.ObjectId,
+            ref: "User"
+        }
     }
 );
 
-const Game = mongoose.model("games", gameSchema);
+const Game = mongoose.model("game", gameSchema);
 
 module.exports = Game;

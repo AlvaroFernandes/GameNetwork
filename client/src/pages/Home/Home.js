@@ -8,7 +8,8 @@ export class Home extends Component {
     data: [],
     pageName: {
       name: "Home"
-    }
+    },
+    redirectTo: null,
   };
   logout(event) {
     event.preventDefault();
@@ -20,6 +21,10 @@ export class Home extends Component {
           this.props.updateUser({
             loggedIn: false,
             username: null,
+          });
+          // update the state to redirect to home
+          this.setState({
+            redirectTo: '/'
           });
         };
       })

@@ -3,16 +3,12 @@ import { makeStyles, fade,  } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
-import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { ExitToApp } from '@material-ui/icons';
 
@@ -81,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function LoginNav(props){
-  console.log(props);
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -117,8 +112,9 @@ function LoginNav(props){
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
+        <MenuItem onClick={handleMenuClose}>Search</MenuItem>
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
       </Menu>
     );
   
@@ -134,31 +130,22 @@ function LoginNav(props){
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
+          <IconButton aria-label="Search" aria-controls="primary-search-account-menu" aria-haspopup="true" href="/search" color="inherit">
+            <SearchIcon />
           </IconButton>
-          <p>Messages</p>
+          <p>Search</p>
         </MenuItem>
         <MenuItem>
-          <IconButton aria-label="show 11 new notifications" color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-          >
+          <IconButton aria-label="Search" aria-controls="primary-search-account-menu" aria-haspopup="true" href="/Profile" color="inherit">
             <AccountCircle />
           </IconButton>
           <p>Profile</p>
+        </MenuItem>
+        <MenuItem>
+          <IconButton aria-label="Search" aria-controls="primary-search-account-menu" aria-haspopup="true" onClick={props.logout} color="inherit">
+            <ExitToApp />
+          </IconButton>
+          <p>Logout</p>
         </MenuItem>
       </Menu>
     );
@@ -167,9 +154,7 @@ function LoginNav(props){
           <AppBar position="static">
             <Toolbar>
               <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" href="/">
-                <Tooltip title='Routes to "/"'>
                   <HomeIcon />
-                </Tooltip>
               </IconButton>
               <Typography className={classes.title} variant="h6" noWrap>
                 Game Network
@@ -182,7 +167,6 @@ function LoginNav(props){
                   aria-controls={menuId}
                   aria-haspopup="true"
                   href="/Search"
-                  onClick={handleProfileMenuOpen}
                   color="inherit"
                 >
                   <SearchIcon />
@@ -193,7 +177,6 @@ function LoginNav(props){
                   aria-controls={menuId}
                   aria-haspopup="true"
                   href="/Profile"
-                  onClick={handleProfileMenuOpen}
                   color="inherit"
                 >
                   <AccountCircle />
