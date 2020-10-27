@@ -5,6 +5,7 @@ import api from '../../utils/API';
 import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import GameSearch from './gameSearch';
+import UserSearch from './userSearch';
 
 const useStyles = theme => ({
     root: {
@@ -72,38 +73,7 @@ class Search extends Component {
                             </Typography>
                         </Grid>
                         <GameSearch />
-                        <Grid
-                            item
-                            xs={6}
-                        >
-                            <Typography variant='h6' component='h4' style={{ margin: '1em' }}>
-                                Search Friends
-                            </Typography>
-                            <form className={classes.root} noValidate id='userSearch'>
-                                <TextField 
-                                    id='userSearchInput'
-                                    label='Search User'
-                                    ref={ this.userRef }
-                                    onChange={this.handleUserSearchInputChange}
-                                    value={this.state.searchUser}
-                                    style={{ margin: 8 }}
-                                    placeholder='Search User...'
-                                    fullWidth
-                                    margin='normal'
-                                    inputlabelprops={{
-                                        shrink: true,
-                                    }}
-                                />
-                                <Button
-                                    onClick={this.handleUserSearch}
-                                    variant='contained'
-                                    className={classes.button}
-                                    endIcon={<SearchIcon />}
-                                >
-                                    Search...
-                                </Button>
-                            </form>
-                        </Grid>
+                        <UserSearch />
                     </Grid>
                 </Paper>
             </div>

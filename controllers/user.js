@@ -56,10 +56,7 @@ module.exports = {
     },
     searchUser: function (req, res) {
         db.UserModel
-            .find({$or:[
-                    {"username" : {$regex : `.*${req.user.searchUser}.*`}},
-                    {"fullname" : {$regex : `.*${req.user.searchUser}.*`}}
-            ]})
+            .find({})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
