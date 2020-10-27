@@ -7,8 +7,8 @@ const API = {
 	method: "GET",
 	url: BASE_URL,
 	headers: {
-		"x-rapidapi-host": apiConfig.host,
-		"x-rapidapi-key": apiConfig.key,
+		"x-rapidapi-host": apiConfig.host || process.env.API_HOST,
+		"x-rapidapi-key": apiConfig.key || process.env.API_KEY,
 
 		"useQueryString": true
 	}
