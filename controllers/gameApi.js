@@ -1,5 +1,4 @@
 const axios = require('axios');
-const apiConfig = require('../apiConfig');
 const db = require('../models');
 
 const BASE_URL = 'https://rapidapi.p.rapidapi.com/games';
@@ -7,8 +6,8 @@ const API = {
 	method: "GET",
 	url: BASE_URL,
 	headers: {
-		"x-rapidapi-host": apiConfig.host || process.env.API_HOST,
-		"x-rapidapi-key": apiConfig.key || process.env.API_KEY,
+		"x-rapidapi-host": process.env.API_HOST,
+		"x-rapidapi-key": process.env.API_KEY,
 
 		"useQueryString": true
 	}
