@@ -35,7 +35,7 @@ app.use(passport.session());
 
 app.use(routes);
 
-app.get('*', res => res.sendFile(path.join(__dirname + '/client/build/index.html')));
+app.get('*', (req, res) => res.sendFile(path.join(__dirname + '/client/build/index.html')));
 app.listen(PORT, () => {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)
 });
