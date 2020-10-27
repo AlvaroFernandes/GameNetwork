@@ -1,29 +1,43 @@
-# Create React Express App
+# GameNetwork
 
-## About This Boilerplate
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/AlvaroFernandes/GameNetwork/blob/master/LICENSE)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+  ## Description
+  
+  This application consists of a social network for gamers; on the final product, the user will be able to search games on all platforms and add to his profile.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+  Once the game is added, the user will be able to comment on the game, rate the game, mark achievements and also see with other users are playing the searched game.
 
-## Starting the app locally
+  Also, it will be possible to invite friends or add existing users as friends been able to chat and see the progress of these friends on the games .
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+  ## Table of contents
+  
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [License](#license)
+  * [Contributing](#contributing)
+  * [Questions](#questions)
+  
 
-```
-npm install
-```
+  ## Installation
+  
+ To install this application is necessary to run the command "npm install" and "npm start" on the terminal. Also, this application is deployed on github pages. To accesses, the application [click here](https://alvarofernandes.github.io/GameNetwork/). 
 
-This should install node modules within the server and the client folder.
+  ## Usage
 
-After both installations complete, run the following command in your terminal:
+  Users can use this application to connect to other gamers and also check what they are playing.
 
-```
-npm start
-```
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+  ## License
 
-## Deployment (Heroku)
+  This application uses MIT License
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+  ## Contributing
+
+
+
+  ## Questions
+
+  Any other question feel free to contact me on my email fernandes.alvaro@gmail.com or my git hub profile [Github profile](https://github.com/AlvaroFernandes).
+
+
