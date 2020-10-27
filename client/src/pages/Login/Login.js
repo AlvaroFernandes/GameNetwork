@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Tooltip from '@material-ui/core/Tooltip';
 
 import checkLoginAPI from '../../utils/API';
 
@@ -98,17 +97,9 @@ export class Login extends Component {
                                 onChange={this.updateInput.bind(this)}
                                 style={{margin: "0.5em"}}
                             />
-                            <Tooltip
-                                title="------- Submit the user login information in the form of ------- {username: this.state.username, password: this.state.password}"
-                            >
-                                <Button
-                                    style={{margin: "1em"}}
-                                    disabled={!(this.state.username && this.state.password)}
-                                    onClick={this.handleFormSubmit}
-                                >
-                                    Submit
-                                </Button>
-                            </Tooltip>
+                            <Button style={{margin: "1em"}} disabled={!(this.state.username && this.state.password)} onClick={this.handleFormSubmit} >
+                                Submit
+                            </Button>
                         </Grid>
                     </Paper>
                 </Grid>

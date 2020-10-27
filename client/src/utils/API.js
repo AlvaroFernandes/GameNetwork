@@ -14,10 +14,10 @@ export default {
         return axios.post("/user/logout", logoutUser); 
     },
     postBio: (userBio) => {
-        return axios.post("/user/bio/" + userBio);
+        return axios.post("/user/bio/", userBio);
     },
     getBio: (userId) => {
-        return axios.get("/user/bio/" + userId);
+        return axios.get("/user/bio/", userId);
     },
     getUserInfo: (userId) => {
         return axios.get("/user/info", userId);

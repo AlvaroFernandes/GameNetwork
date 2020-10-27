@@ -70,6 +70,7 @@ export class UserCreate extends Component {
                 username: this.state.username,
                 password: this.state.password,
                 fullname: this.state.fullname,
+                email: this.state.email,
                 phone: this.state.phone,
                 age: this.state.age,
                 psn: this.state.psn,
