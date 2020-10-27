@@ -59,5 +59,12 @@ module.exports = {
             .find({})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    getUserInfo: function (req, res) {
+        console.log(req);
+        db.UserModel
+            .findOne({ _id: req.params.id })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
     }
 };

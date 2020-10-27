@@ -36,4 +36,7 @@ router.route("/bio")
 router.route("/userSearch")
     .get(userController.searchUser);
 
+router.route("/userInfo/:id")
+    .get(userController.getUserInfo);
+
 module.exports = router;

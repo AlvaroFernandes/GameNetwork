@@ -59,7 +59,7 @@ class UserSearch extends Component {
 
     render(){
         const { classes } = this.props;
-        console.log(this.state.data);
+        console.log(this.state);
         return(
             <Grid item xs={6}>
                 {!this.state.data ? (
@@ -96,12 +96,14 @@ class UserSearch extends Component {
                         ):(
                             <List dense className={classes.list}>
                                 {this.state.data.filter(
-                                    e => e.name.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) ===0
+                                    e => e.username.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) === 0
                                 ).map(
                                     e => {
                                         return(
-                                            <ListItem key={e.id} button component={Link} to={`/userInfo/${e.id}`}>
-                                                <ListItemText id={e.id} primary={e.name} />
+                                            <ListItem key={e._id} button component={Link} to={`/userInfo/${e._id}`}>
+                                                <ListItemText id={e._id} primary={e.username}>
+                                                    {e.username}
+                                                </ListItemText>
                                             </ListItem>
                                         )
                                     }

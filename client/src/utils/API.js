@@ -20,7 +20,7 @@ export default {
         return axios.get("/user/bio/", userId);
     },
     getUserInfo: (userId) => {
-        return axios.get("/user/info", userId);
+        return axios.get("/user/userInfo/" + userId);
     },
     getHomeImg: () => {
         return axios.get("/game/home/");

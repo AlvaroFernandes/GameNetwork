@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, TextField, Button } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import api from '../../utils/API';
-import SearchIcon from '@material-ui/icons/Search';
 import PropTypes from 'prop-types';
 import GameSearch from './gameSearch';
 import UserSearch from './userSearch';

@@ -96,10 +96,10 @@ class GameSearch extends Component {
                         ):(
                             <List dense className={classes.list}>
                                 {this.state.data.filter(
-                                    e => e.username.toLowerCase().indexOf(this.state.searchGame.toLowerCase()) === 0
-                                ).map(
-                                    e => {
-                                        return(
+                                    e => e.name.toLowerCase().indexOf(this.state.searchGame.toLowerCase()) === 0
+                                    ).map(
+                                        e => {
+                                            return(
                                                 <ListItem key={e.id} button component={Link} to={`/gameInfo/${e.id}`}>
                                                     <ListItemAvatar>
                                                         <Avatar

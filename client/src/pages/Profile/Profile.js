@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import PropTypes from 'prop-types';
@@ -82,10 +79,10 @@ export class Profile extends Component {
                                 ", ${this.state.data.age}"
                             )}
                         </Typography>
-                        <Typography variant='p' display='block'>
+                        <Typography variant='h6' component='p' display='block'>
                             E-mail: {this.state.data.email}
                         </Typography>
-                        <Typography variant='p' display='block'>
+                        <Typography variant='h6' component='p' display='block'>
                             Mobile: {this.state.data.phone}
                         </Typography>
                     </Grid>
