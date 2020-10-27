@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Chip from '@material-ui/core/Chip';
-import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
+import { Chip, Grid, Paper, Typography, Button, Avatar } from '@material-ui/core';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import PropTypes from 'prop-types';
 import api from '../../utils/API';
 
@@ -46,6 +43,23 @@ class UserInfo extends Component {
             };
         });
     };
+
+    addUser(id){
+        const userId = this.state._id;
+        const freiendId = id
+
+        console.log(
+            'myID ' + userId,
+            "friendID " + freiendId
+        );
+
+        api.postUserFriend({
+            userId: userId,
+            friendId: freiendId
+        })
+        .then(res => console.log('friend added!'))
+        .catch(err => console.log(err));
+    }
     render() {
         const { classes } = this.props;
         console.log(this.state.data);
@@ -109,7 +123,9 @@ class UserInfo extends Component {
                         <Grid container diretion='row'>
                             <Grid item xs={2}></Grid>
                             <Grid item xs={8}>
-                                
+                                <Button variant='contained' color="primary" style={{ float: 'right' }} onClick={() => this.addUser(this.state.data._id)} startIcon={<AddCircleOutlineIcon />}>
+                                    Add Friend
+                                </Button>
                             </Grid>
                         </Grid>
                     </div>

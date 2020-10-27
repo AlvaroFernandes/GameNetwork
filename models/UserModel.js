@@ -43,7 +43,12 @@ const userSchema = new Schema(
         require: false,
     },
     games: [{
-      type: Schema.Types.ObjectId, ref: "Game"
+      type: Number,
+      require: false,
+    }],
+    friends: [{
+      type: String,
+      require: false,
     }]
   },
 

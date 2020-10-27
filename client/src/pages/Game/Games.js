@@ -76,7 +76,7 @@ class Games extends Component {
                             <Grid container direction="row" justify="center" spacing={0}>
                                 <Grid item xs={12}>
                                     <img className={ classes.img } src={this.state.data.img} alt={this.state.data.name}/>
-                                    <Button variant='contained' color="primary" style={{ float: 'right' }} onClick={this.addGame(this.state.data.id)} startIcon={<AddCircleOutlineIcon />}>
+                                    <Button variant='contained' color="primary" style={{ float: 'right' }} onClick={ () => this.addGame(this.state.data.id) } startIcon={<AddCircleOutlineIcon />}>
                                         ADD
                                     </Button>
                                 </Grid>

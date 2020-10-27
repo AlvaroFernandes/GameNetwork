@@ -66,5 +66,23 @@ module.exports = {
             .findOne({ _id: req.params.id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    addFriends: function (req, res) {
+        console.log('add Friend');
+        const userID = req.body.userId.userId;
+        console.log("user = " + userID);
+		const friendId = req.body.userId.friendId;
+		console.log("friend =" + friendId)
+		db.UserModel
+			.updateOne({ _id: userID}, { '$push':{
+				'friends': friendId,
+			} })
+			.then(dbModel => {
+				res.json(dbModel)
+			})
+			.catch(err => {
+				res.status(422).json(err)
+				console.log(err);
+			});
     }
 };

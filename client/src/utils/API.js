@@ -34,6 +34,9 @@ export default {
     postUserGame: (userId, gameId) => {
         return axios.post("/game/addGame/", { userId , gameId})
     },
+    postUserFriend: (userId,friendId) => {
+        return axios.post("/user/addFriend/", { userId, friendId });
+    },
     searchUser: () => {
         return axios.get("/user/userSearch");
     }

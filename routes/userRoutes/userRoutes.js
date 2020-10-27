@@ -39,4 +39,7 @@ router.route("/userSearch")
 router.route("/userInfo/:id")
     .get(userController.getUserInfo);
 
+router.route('/addFriend')
+    .post(userController.addFriends);
+
 module.exports = router;

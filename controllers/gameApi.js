@@ -87,14 +87,20 @@ module.exports = {
 	},
 	addGame: function (req, res) {
 		console.log("add game")
-		console.log(req.body);
-		db.GameModel
-			.create(req.body.userId)
-			.then(dbMode => {
+		const userID = req.body.userId.userId;
+		console.log("user = " + userID);
+		const gameID = req.body.userId.gameId;
+		console.log("game =" + gameID)
+		db.UserModel
+			.updateOne({ _id: userID}, { '$push':{
+				'games': gameID,
+			} })
+			.then(dbModel => {
 				res.json(dbModel)
 			})
 			.catch(err => {
 				res.status(422).json(err)
+				console.log(err);
 			});
 	}
 }
