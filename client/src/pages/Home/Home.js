@@ -13,10 +13,8 @@ export class Home extends Component {
   };
   logout(event) {
     event.preventDefault();
-    console.log('logging out');
     logoutAPI.postLogout()
       .then(res => {
-        console.log(res.data);
         if (res.status(200)) {
           this.props.updateUser({
             loggedIn: false,

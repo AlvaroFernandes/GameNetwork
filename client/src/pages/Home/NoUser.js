@@ -28,7 +28,6 @@ export default class NoUser extends Component{
     
 
     render(){
-       console.log(this.state.data);
         return (
             !this.state.data ? (
                 <Grid

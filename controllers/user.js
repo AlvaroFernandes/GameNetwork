@@ -3,7 +3,6 @@ const db = require('../models');
 
 module.exports = {
     userCreate: function (req, res) {
-        console.log('userCreate')
         db.UserModel
             .create(req.body)
             .then(dbModel => {
@@ -14,10 +13,7 @@ module.exports = {
             });
     },
     login: function (req, res) {
-        console.log('routes/user.js, login, req.body: ');
-        console.log(req.body)
         passport.authenticate('local'),(req, res) => {
-            console.log('logged in', req.user);
             var userInfo = {
                 username: req.user.username
             };
@@ -25,8 +21,6 @@ module.exports = {
         }
     },
     userLoggedIn: function (req, res, next) {
-        console.log('===== user!!======')
-        console.log(req.user)
         if (req.user) {
             res.json({ user: req.user })
         } else {
@@ -42,7 +36,6 @@ module.exports = {
         };
     },
     updateBio: function (req, res) {
-        console.log(req.body)
         db.UserModel
             .findByIdAndUpdate({ _id: req.user._id }, req.body)
             .then(dbModel => res.json(dbModel))
@@ -61,18 +54,14 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     getUserInfo: function (req, res) {
-        console.log(req);
         db.UserModel
             .findOne({ _id: req.params.id })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     addFriends: function (req, res) {
-        console.log('add Friend');
         const userID = req.body.userId.userId;
-        console.log("user = " + userID);
 		const friendId = req.body.userId.friendId;
-		console.log("friend =" + friendId)
 		db.UserModel
 			.updateOne({ _id: userID}, { '$push':{
 				'friends': friendId,
@@ -82,7 +71,6 @@ module.exports = {
 			})
 			.catch(err => {
 				res.status(422).json(err)
-				console.log(err);
 			});
     }
 };

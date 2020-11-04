@@ -32,8 +32,6 @@ export class Login extends Component {
                 password: this.state.password,
             })
             .then(res => {
-                console.log('login response: ')
-                console.log(res)
                 if (res.status === 200) {
                     // update App.js state
                     this.props.updateUser({
@@ -47,16 +45,11 @@ export class Login extends Component {
                 };
             })
             .catch(error => {
-                console.log('login error: ')
                 console.log(error);
                 
             });
         };
     };
-
-    componentDidMount() {
-        console.log(this.props)
-    }
 
     render() {
         if (this.state.redirectTo) {
@@ -81,7 +74,6 @@ export class Login extends Component {
                             <Typography variant="h5" component="h2" style={{margin: "1em"}}>
                                     Log into your user account
                             </Typography>
-                            {/* <Divider variant="middle"/> */}
                             <TextField 
                                 id="username"
                                 label="Enter Username"

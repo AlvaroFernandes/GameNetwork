@@ -40,7 +40,6 @@ class Search extends Component {
         e.preventDefault();
 
         if(this.state.searchUser){
-            console.log(this.state.searchUser);
             api.searchUser({
                 user: this.state.searchUser,
             })

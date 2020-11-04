@@ -40,20 +40,7 @@ export class Profile extends Component {
         const { id, value } = event.target;
         this.setState({ [id]: value });
     };
-    submitUpdate = event => {
-        event.preventDefault();
-        api.postBio({
-            _id: this.state._id,
-            age: this.state.age,
-        })
-        .then(res => {
-            console.log('submit response: ');
-            console.log(res);
-            if (res.status === 200) {
-                console.log("post successful")
-            }
-        })
-    }
+    
     loadBio() {
         console.log("called loadBio()")
         console.log(this.state._id)

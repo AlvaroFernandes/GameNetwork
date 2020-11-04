@@ -59,7 +59,6 @@ class GameSearch extends Component {
 
     render(){
         const { classes } = this.props;
-        console.log(this.state);
         return(
             <Grid item xs={6}>  
                 {!this.state.data ? (

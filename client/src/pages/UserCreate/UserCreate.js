@@ -66,7 +66,6 @@ export class UserCreate extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.username && this.state.password && this.state.fullname && this.state.email) {
-            console.log(this.state.age);
             submitDataAPI.postUserData({
                 username: this.state.username,
                 password: this.state.password,
@@ -100,7 +99,6 @@ export class UserCreate extends Component {
 
     handleChangeAge = (event) => {
         const age = event.target.value;
-        console.log(age);
         this.setState({
             age: age,
         });
@@ -280,23 +278,15 @@ export class UserCreate extends Component {
                                     </Grid>
                                 </Grid>
                                 <Grid>
-                                    <Tooltip
-                                        title="------ Submit the user login information in the form of ------ 
-                                        {username: this.state.username, password: this.state.password, 
-                                        fullname: this.state.fullname, email: this.state.email,
-                                        phone: this.state.phone, age} -------
-                                        All the user information is entered into the database accordingly except for the password which is encrypted using bcrypt "
-                                    >
-                                        <span>
-                                            <Button
-                                                style={{margin: "1em"}}
-                                                disabled={!(this.state.username && this.state.password)}
-                                                onClick={this.handleFormSubmit}
-                                            >
-                                                Submit
-                                            </Button>
-                                        </span>
-                                    </Tooltip>
+                                    <span>
+                                        <Button
+                                            style={{margin: "1em"}}
+                                            disabled={!(this.state.username && this.state.password)}
+                                            onClick={this.handleFormSubmit}
+                                        >
+                                            Submit
+                                        </Button>
+                                    </span>
                                 </Grid>
                             </Grid>
                         </Paper> 

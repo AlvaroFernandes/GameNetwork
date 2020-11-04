@@ -27,7 +27,6 @@ module.exports = {
 			res.json(imgArray);
 		})
 		.catch(function(error){
-			console.log(error);
 			res.status(500).json({error: error});
 		})
 	},
@@ -47,7 +46,6 @@ module.exports = {
 			res.json(listGames);
 		})
 		.catch(function(error){
-			console.log(error);
 			res.status(500).json({error: error});
 
 		})
@@ -55,7 +53,6 @@ module.exports = {
 	getGame: function (req, res){
 		const id = req.params.id;
 		const url = "https://rawg-video-games-database.p.rapidapi.com/games/" + id;
-		console.log(req);
 		axios({
 			"method": "GET",
     		"url": url,
@@ -79,17 +76,13 @@ module.exports = {
 			};
 			res.json(game);
 		}).catch(function(error){
-			console.log(error);
 			res.status(500).json({error: error});
 
 		})
 	},
 	addGame: function (req, res) {
-		console.log("add game")
 		const userID = req.body.userId.userId;
-		console.log("user = " + userID);
 		const gameID = req.body.userId.gameId;
-		console.log("game =" + gameID)
 		db.UserModel
 			.updateOne({ _id: userID}, { '$push':{
 				'games': gameID,
@@ -99,7 +92,6 @@ module.exports = {
 			})
 			.catch(err => {
 				res.status(422).json(err)
-				console.log(err);
 			});
 	}
 }

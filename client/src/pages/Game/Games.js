@@ -24,6 +24,7 @@ const useStyles = theme => ({
 class Games extends Component {
     state={
         _id: this.props._id,
+        hasGame: false,
     }
     
     componentDidMount(){
@@ -32,10 +33,8 @@ class Games extends Component {
     }
 
     loadGame(id){
-        console.log(id);
         api.getGame(id)
         .then(res => {
-            console.log(res);
             if(res.status === 200){
               this.setState({
                   data: res.data,
@@ -50,7 +49,6 @@ class Games extends Component {
         const userId = this.state._id;
         const gameId = id;
 
-        console.log(gameId, userId);
         api.postUserGame({
             gameId: gameId,
             userId: userId
@@ -63,7 +61,6 @@ class Games extends Component {
     
     render(){
         const { classes } = this.props;
-        console.log(this.state.data);
         return(
             <div className={classes.root}>
                  {!this.state.data ? (

@@ -33,7 +33,6 @@ class Dashboard extends Component {
     }
 
     loadInfo() {
-        console.log('Get user info');
         api.getBio(this.props.id)
         .then(res => {
             if(res.status === 200){
@@ -81,7 +80,6 @@ class Dashboard extends Component {
     }
 
     render(){
-        console.log(this.state);
         const {classes} = this.props;
         return(
             <div className={classes.root}>

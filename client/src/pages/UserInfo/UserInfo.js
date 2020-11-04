@@ -26,16 +26,12 @@ class UserInfo extends Component {
 
     componentDidMount() {
         const userId = this.props.match.params.id;
-        console.log(this.props);
         this.loadBio(userId);
     };
     
     loadBio(id) {
-        console.log("called loadBio()")
         api.getUserInfo(id)
         .then(res => {
-            console.log("Get user bio: ");
-            console.log(res.data);
             if (res.status === 200) {
                 this.setState({
                     data: res.data,
@@ -48,11 +44,6 @@ class UserInfo extends Component {
         const userId = this.state._id;
         const freiendId = id
 
-        console.log(
-            'myID ' + userId,
-            "friendID " + freiendId
-        );
-
         api.postUserFriend({
             userId: userId,
             friendId: freiendId
@@ -62,7 +53,6 @@ class UserInfo extends Component {
     }
     render() {
         const { classes } = this.props;
-        console.log(this.state.data);
         return (
             <div>
                 {!this.state.data ? (
