@@ -6,6 +6,10 @@ import Chip from '@material-ui/core/Chip';
 import Avatar from '@material-ui/core/Avatar';
 import PropTypes from 'prop-types';
 import api from '../../utils/API';
+import playstation from '../../assets/img/playstation-logo.jpg';
+import xbox from '../../assets/img/xbox-logo.png';
+import steam from '../../assets/img/steam-logo.png';
+import { Divider } from '@material-ui/core';
 
 const useStyles = theme => ({
     root: {
@@ -18,7 +22,10 @@ const useStyles = theme => ({
     },
     img: {
         maxWidth: 'inherit',
-    }
+    },
+    divider: {
+        margin: theme.spacing(2, 0),
+    },
 })
 
 export class Profile extends Component {
@@ -66,6 +73,7 @@ export class Profile extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
+                <Divider className={classes.divider} />
                 <Grid container direction='row'>
                     <Grid item xs={2}></Grid>
                     <Grid item xs={4}>
@@ -87,6 +95,7 @@ export class Profile extends Component {
                         </Typography>
                     </Grid>
                 </Grid>
+                <Divider className={classes.divider} />
                 <Grid container direction='row'>
                     <Grid item xs={2}></Grid>
                     <Grid item xs={8}>
@@ -96,17 +105,17 @@ export class Profile extends Component {
                         {!this.state.data.psn ? (
                             null
                         ): (
-                           <Chip label={this.state.data.psn} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/playstation-logo.jpg' />} />                            
+                           <Chip label={this.state.data.psn} variant='outlined' color='primary' avatar={<Avatar src={ playstation } />} />                            
                         )}
                         {!this.state.data.live ? (
                             null
                         ): (
-                           <Chip label={this.state.data.live} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/xbox-logo.png' />} />                            
+                           <Chip label={this.state.data.live} variant='outlined' color='primary' avatar={<Avatar src={ xbox } />} />                            
                         )}
                         {!this.state.data.steam ? (
                             null
                         ): (
-                           <Chip label={this.state.data.steam} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/steam-logo.png' />} />                            
+                           <Chip label={this.state.data.steam} variant='outlined' color='primary' avatar={<Avatar src={ steam } />} />                            
                         )}
                     </Grid>
                     <Grid item xs={2}></Grid>                

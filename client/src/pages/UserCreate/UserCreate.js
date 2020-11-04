@@ -66,6 +66,7 @@ export class UserCreate extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.username && this.state.password && this.state.fullname && this.state.email) {
+            console.log(this.state.age);
             submitDataAPI.postUserData({
                 username: this.state.username,
                 password: this.state.password,
@@ -98,10 +99,10 @@ export class UserCreate extends Component {
     };
 
     handleChangeAge = (event) => {
-        const age = event.target.age;
+        const age = event.target.value;
+        console.log(age);
         this.setState({
-            ...this.state,
-            [age]: event.target.age,
+            age: age,
         });
     };
 
@@ -226,9 +227,10 @@ export class UserCreate extends Component {
                                                 id="age"
                                                 aria-describedby="age-helper"
                                             >   
-                                                <option aria-label="None" value="" />
+                                                <option value=""></option>
                                                 { optAge.map((age, i) => {
-                                                    return (<option key={i} value={age}>{age}</option>)
+                                                    console.log(age, i);
+                                                    return (<option value={age}>{age}</option>)
                                                 })}
                                             </NativeSelect>
                                             <FormHelperText id="age-helper">Select your age</FormHelperText>
