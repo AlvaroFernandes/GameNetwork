@@ -57,9 +57,9 @@ module.exports = {
 			"method": "GET",
     		"url": url,
     		"headers":{
-    			"x-rapidapi-host": apiConfig.host,
-				"x-rapidapi-key": apiConfig.key,
-    		}
+				"x-rapidapi-host": process.env.API_HOST,
+				"x-rapidapi-key": process.env.API_KEY,
+					}
 		}).then(function(data){
 			const gameInfo = data.data;
 			const game = {
