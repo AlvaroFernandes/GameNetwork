@@ -109,7 +109,7 @@ class Dashboard extends Component {
                     >
                         <Paper className={classes.paper}>
                             <Typography variant='h6' component='h4' style={{ margin: '1em' }}>
-                                List of add games
+                                List of games
                             </Typography>
                             {/* {!this.state.games ? (
                                 <Paper>

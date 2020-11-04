@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Chip, Grid, Paper, Typography, Button, Avatar } from '@material-ui/core';
+import { Chip, Grid, Paper, Typography, Button, Avatar, Divider } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import PropTypes from 'prop-types';
 import api from '../../utils/API';
+import playstation from '../../assets/img/playstation-logo.jpg';
+import xbox from '../../assets/img/xbox-logo.png';
+import steam from '../../assets/img/steam-logo.png';
+
 
 const useStyles = theme => ({
     root: {
@@ -16,7 +20,10 @@ const useStyles = theme => ({
     },
     img: {
         maxWidth: 'inherit',
-    }
+    },
+    divider: {
+        margin: theme.spacing(2, 0),
+    },
 })
 
 class UserInfo extends Component {
@@ -65,6 +72,7 @@ class UserInfo extends Component {
                     </Grid> 
                 ) : (
                     <div className={classes.root}>
+                        <Divider className={classes.divider} />
                         <Grid container direction='row'>
                             <Grid item xs={2}></Grid>
                             <Grid item xs={4}>
@@ -72,12 +80,13 @@ class UserInfo extends Component {
                             </Grid>
                             <Grid item xs={4}>
                                 <Typography variant='h4'>
-                                    {this.state.data.fullname}{!this.state.data.age ? (
-                                        null
-                                    ) : (
-                                        ", ${this.state.data.age}"
-                                    )}
+                                    {this.state.data.fullname}
                                 </Typography>
+                                {!this.state.data.age ? (null) : (
+                                    <Typography variant='h6' component='p' display='block'>
+                                        Age: {this.state.data.age}
+                                    </Typography>
+                                )}
                                 <Typography component='p' display='block'>
                                     E-mail: {this.state.data.email}
                                 </Typography>
@@ -95,17 +104,17 @@ class UserInfo extends Component {
                                 {!this.state.data.psn ? (
                                     null
                                 ): (
-                                <Chip label={this.state.data.psn} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/playstation-logo.jpg' />} />                            
+                                <Chip label={this.state.data.psn} variant='outlined' color='primary' avatar={<Avatar src={ playstation } />} />                            
                                 )}
                                 {!this.state.data.live ? (
                                     null
                                 ): (
-                                <Chip label={this.state.data.live} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/xbox-logo.png' />} />                            
+                                <Chip label={this.state.data.live} variant='outlined' color='primary' avatar={<Avatar src={ xbox } />} />                            
                                 )}
                                 {!this.state.data.steam ? (
                                     null
                                 ): (
-                                <Chip label={this.state.data.steam} variant='outlined' color='primary' avatar={<Avatar src='../../assets/img/steam-logo.png' />} />                            
+                                <Chip label={this.state.data.steam} variant='outlined' color='primary' avatar={<Avatar src={ steam } />} />                            
                                 )}
                             </Grid>
                             <Grid item xs={2}></Grid>                
