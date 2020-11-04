@@ -81,12 +81,15 @@ export class Profile extends Component {
                     </Grid>
                     <Grid item xs={4}>
                         <Typography variant='h4'>
-                            {this.state.data.fullname}{!this.state.data.age ? (
+                            {this.state.data.fullname}
+                        </Typography>
+                        {!this.state.data.age ? (
                                 null
                             ) : (
-                                ", ${this.state.data.age}"
+                                <Typography variant='h6' component='p' display='block'>
+                                    Age: {this.state.data.age}
+                                </Typography>
                             )}
-                        </Typography>
                         <Typography variant='h6' component='p' display='block'>
                             E-mail: {this.state.data.email}
                         </Typography>
