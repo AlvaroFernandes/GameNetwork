@@ -66,7 +66,7 @@ class Dashboard extends Component {
         this.state.bio.friends.map(e => {
           api.getUserInfo(e)
           .then(res => {
-              if(res.status === 200){
+              if(res.status === 200){                  
                   this.setState({
                       friends: res.data
                   })
@@ -83,16 +83,7 @@ class Dashboard extends Component {
         const {classes} = this.props;
         return(
             <div className={classes.root}>
-                {!this.state.friends ? (
-                    <Grid container spacing={0} direction="column" alignItems="center" justify="center" style={{ minHeight: '100vh' }}>
-                        <Paper>
-                            <Typography variant="h5" component="h2" style={{margin: "1em"}}>
-                                Loading...
-                            </Typography>
-                        </Paper> 
-                    </Grid> 
-                ): (
-                    <div>
+                <div>
                     <div className={classes.appBarSpacer} />
 
                         <Grid
@@ -120,8 +111,15 @@ class Dashboard extends Component {
                             <Typography variant='h6' component='h4' style={{ margin: '1em' }}>
                                 List of add games
                             </Typography>
-                            <List className={classes.list}>
-                                {/* {this.state.games.map( e => {
+                            {/* {!this.state.games ? (
+                                <Paper>
+                                    <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                                        Loading...
+                                    </Typography>
+                                </Paper> 
+                            ):(
+                                <List className={classes.list}>
+                                {this.state.games.map( e => {
                                     return(
                                         <ListItem key={e.id} button component={Link} to={`/gameInfo/${e.id}`}>
                                             <ListItemAvatar>
@@ -133,8 +131,9 @@ class Dashboard extends Component {
                                             <ListItemText id={e.id} primary={e.name} />
                                         </ListItem>
                                     )
-                                })} */}
-                            </List>
+                                })}                            
+                                </List>
+                            )} */}
                         </Paper>
                     </Grid>
                     <Grid
@@ -146,8 +145,18 @@ class Dashboard extends Component {
                             <Typography variant='h6' component='h4' style={{ margin: '1em' }}>
                                 List of Friends
                             </Typography>
+                            {/* {!this.state.friends ? (
+                                <Paper>
+                                    <Typography variant="h5" component="h2" style={{margin: "1em"}}>
+                                        Loading...
+                                    </Typography>
+                                </Paper> 
+                            ): (
                             <List className={classes.list}>
-                                {/* {this.state.bio.friends.map( e => {
+
+                                 {this.state.friends.map( e => {
+                                     
+                                     console.log("Friends " + e);
                                     return(
                                         <ListItem key={e._id} button component={Link} to={`/userInfo/${e._id}`}>
                                             <ListItemText id={e._id} primary={e.username}>
@@ -155,14 +164,13 @@ class Dashboard extends Component {
                                                 </ListItemText>
                                         </ListItem>
                                     )
-                                })} */}
+                                })} 
                             </List>
+                            )} */}
                         </Paper>
                     </Grid>
                 </Grid>
                 </div>
-                )}
-                    
             </div>
         )
     }
